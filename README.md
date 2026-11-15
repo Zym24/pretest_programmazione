@@ -1,4 +1,4 @@
 # Pretest di programmazione
 
-##Disclamer
+## Disclamer
 I pretest possono presentare error.

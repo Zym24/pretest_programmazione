@@ -131,8 +131,8 @@
         })
         .then(mappaPretest => {
           // Trasforma l'oggetto in coppie [nomeFile, etichetta] e ordina per nomeFile
-          const voci = Object.entries(mappaPretest)
-            .sort((a, b) => a[0].localeCompare(b[0]));
+          //const voci = Object.entries(mappaPretest)
+            //.sort((a, b) => a[0].localeCompare(b[0]));
 
           let optionsOut = "";
           for (const [nomeFile, etichetta] of voci) {

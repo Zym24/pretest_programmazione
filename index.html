@@ -118,19 +118,21 @@
     }
 
     // PRIMA FUNZIONE: legge la cartella e popola il <select>
+    // PRIMA FUNZIONE: legge i file dalla cartella pretest tramite API GitHub
     function caricaNomiFile() {
-      fetch("./pretest/")
-        .then(response => {
-          if (!response.ok) throw new Error(`Errore cartella: ${response.status}`);
-          return response.text();
-        })
-        .then(htmlText => {
-          const doc = new DOMParser().parseFromString(htmlText, "text/html");
+      const utente = "zym24";
+      const repo = "pretest_programmazione"; 
+      const urlApi = `https://api.github.com/repos/${utente}/${repo}/contents/pretest`;
 
-          const nomiFile = Array.from(doc.querySelectorAll("a"))
-            .map(link => link.getAttribute("href"))
-            .filter(href => href && href.endsWith(".json"))
-            .map(href => decodeURIComponent(href.split("/").pop()))
+      fetch(urlApi)
+        .then(response => {
+          if (!response.ok) throw new Error(`Errore API GitHub: ${response.status}`);
+          return response.json();
+        })
+        .then(files => {
+          const nomiFile = files
+            .filter(file => file.type === "file" && file.name.endsWith(".json"))
+            .map(file => file.name)
             .sort((a, b) => a.localeCompare(b));
 
           let optionsOut = "";
@@ -145,7 +147,6 @@
         })
         .catch(err => console.error("Errore lettura cartella:", err));
     }
-
     // SECONDA FUNZIONE: apre il JSON, salva i dati e stampa le domande
     function caricaContenutoFile(nomeFile) {
       risultatoFinale.style.display = "none";

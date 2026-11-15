@@ -8,7 +8,7 @@
       text-align: center;
       font-family: sans-serif;
     }
-    h1{
+    h1 {
       text-align: center;
     }
     .page-inner {
@@ -130,9 +130,8 @@
           return response.json();
         })
         .then(mappaPretest => {
-          // Trasforma l'oggetto in coppie [nomeFile, etichetta] e ordina per nomeFile
-          //const voci = Object.entries(mappaPretest)
-            //.sort((a, b) => a[0].localeCompare(b[0]));
+          // Trasforma l'oggetto in coppie [nomeFile, etichetta] mantenendo l'ordine del file JSON
+          const voci = Object.entries(mappaPretest);
 
           let optionsOut = "";
           for (const [nomeFile, etichetta] of voci) {

@@ -146,59 +146,45 @@
         })
         .catch(err => console.error("Errore lettura cartella:", err));
     }
-    // SECONDA FUNZIONE: apre il JSON, salva i dati e stampa le domande
-    function caricaContenutoFile(nomeFile) {
-      risultatoFinale.style.display = "none";
-      risultatoFinale.innerHTML = "";
-
-      fetch(`./pretest/${nomeFile}`)
+   // PRIMA FUNZIONE: legge listapretest.json e popola il <select>
+    function caricaNomiFile() {
+      fetch("./pretest/listapretest.json")
         .then(response => {
-          if (!response.ok) throw new Error(`HTTP error!: ${response.status}`);
+          if (!response.ok) throw new Error(`Errore listapretest: ${response.status}`);
           return response.json();
         })
-        .then(testo => {
-          domandeCorrenti = testo;
-          let out = "";
+        .then(mappaPretest => {
+          // Trasforma l'oggetto in coppie [nomeFile, etichetta] e ordina per nomeFile
+          const voci = Object.entries(mappaPretest)
+            .sort((a, b) => a[0].localeCompare(b[0]));
 
-          testo.forEach((tes, index) => {
-            const numDomanda = index + 1;
-            const codiceSicuro = escapeHtml(tes.codice);
+          let optionsOut = "";
+          for (const [nomeFile, etichetta] of voci) {
+            optionsOut += `<option value="${escapeHtml(nomeFile)}">${escapeHtml(etichetta)}</option>`;
+          }
+          selectPretest.innerHTML = optionsOut;
 
-            out += `<div class="domanda-box" id="box-domanda-${index}">
-                      <h2>Domanda ${numDomanda}</h2>
-                      <p class="testo-domanda">${escapeHtml(tes.domanda)}</p>`;
-
-            if (tes.codice !== null && tes.codice !== "") {
-              out += `<h2>Codice</h2>
-                      <pre><code>${codiceSicuro}</code></pre>`;
-            }
-
-            out += `<h2>Opzioni</h2>`;
-
-            // Stampa tutte le opzioni del JSON
-            tes.opzioni.forEach((o, optIndex) => {
-              const radioId = `risposta_${index}_${optIndex}`;
-              out += `
-                <div class="opzione-riga" id="riga_${index}_${optIndex}">
-                  <input type="radio" id="${radioId}" name="domanda_${index}" value="${optIndex}">
-                  <label for="${radioId}">${escapeHtml(o)}</label>
-                </div>`;
-            });
-
-            // Opzione "Nessuna risposta" selezionata di default
-            const noAnswerId = `risposta_${index}_none`;
-            out += `
-              <div class="opzione-riga">
-                <input type="radio" id="${noAnswerId}" name="domanda_${index}" value="no_answer" checked>
-                <label for="${noAnswerId}"><em>Nessuna risposta</em></label>
-              </div>
-              <div class="feedback-risposta" id="feedback-${index}"></div>
-            </div>`;
-          });
-
-          placeholder.innerHTML = out;
+          if (voci.length > 0) {
+            caricaContenutoFile(voci[0][0]);
+          }
         })
-        .catch(err => console.error("Errore lettura file:", err));
+        .catch(err => console.error("Errore lettura listapretest:", err));
+    }
+
+    // Opzione "Nessuna risposta" selezionata di default
+    const noAnswerId = `risposta_${index}_none`;
+          out += `
+            <div class="opzione-riga">
+              <input type="radio" id="${noAnswerId}" name="domanda_${index}" value="no_answer" checked>
+              <label for="${noAnswerId}"><em>Nessuna risposta</em></label>
+            </div>
+            <div class="feedback-risposta" id="feedback-${index}"></div>
+          </div>`;
+        });
+
+        placeholder.innerHTML = out;
+      })
+      .catch(err => console.error("Errore lettura file:", err));
     }
 
     // TERZA FUNZIONE: controlla le risposte all'invio del form

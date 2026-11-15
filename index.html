@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Pretest</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+    }
+    .page-inner {
+      width: 50em;
+      max-width: 95%;
+      display: inline-block;
+      text-align: left;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    /* Stile dei riquadri delle domande, uniformato al riquadro del punteggio */
+    .domanda-box {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .domanda-box h2:first-child {
+      margin-top: 0;
+    }
+    pre {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    .testo-domanda {
+      white-space: pre-wrap;
+    }
+    .opzione-riga {
+      margin: 6px 0;
+    }
+    /* Sottolineatura per la singola riga sbagliata */
+    .opzione-sbagliata label {
+      text-decoration: underline;
+      text-decoration-color: #d93025;
+      text-decoration-thickness: 2px;
+      color: #d93025;
+      font-weight: bold;
+    }
+    /* Sottolineatura per la singola riga corretta */
+    .opzione-corretta label {
+      text-decoration: underline;
+      text-decoration-color: #137333;
+      text-decoration-thickness: 2px;
+      color: #137333;
+      font-weight: bold;
+    }
+    /* Riquadro soluzione sotto la domanda (visibile solo se errata o non data) */
+    .feedback-risposta {
+      display: none;
+      margin-top: 12px;
+      padding: 8px 12px;
+      background-color: #f1f3f4;
+      border-left: 4px solid #137333;
+      color: #137333;
+      font-weight: bold;
+    }
+    #risultato-finale {
+      font-size: 1.1em;
+      text-align: center;
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      display: none;
+    }
+    #risultato-finale p {
+      margin: 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-inner">
+    <label for="pretest">Scegli un pretest</label>
+    <select id="pretest"></select>
+    <p>Il candidato ha 40 minuti a disposizione</p>
+    <p>Per la promozione fare almeno 6/10</p>
+    <form id="quiz-form">
+      <div id="output"></div>
+      <div id="risultato-finale"></div>
+      <div class="footer">
+        <button type="submit">INVIA</button>
+      </div>
+    </form>
+
+    <hr>
+    <div class="footer">
+      <a href="https://zym24.github.io">[Home]</a>
+    </div>
+  </div>
+
+  <script>
+    const selectPretest = document.querySelector("#pretest");
+    const placeholder = document.querySelector("#output");
+    const quizForm = document.querySelector("#quiz-form");
+    const risultatoFinale = document.querySelector("#risultato-finale");
+
+    let domandeCorrenti = [];
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    // PRIMA FUNZIONE: legge la cartella e popola il <select>
+    function caricaNomiFile() {
+      fetch("./pretest/")
+        .then(response => {
+          if (!response.ok) throw new Error(`Errore cartella: ${response.status}`);
+          return response.text();
+        })
+        .then(htmlText => {
+          const doc = new DOMParser().parseFromString(htmlText, "text/html");
+
+          const nomiFile = Array.from(doc.querySelectorAll("a"))
+            .map(link => link.getAttribute("href"))
+            .filter(href => href && href.endsWith(".json"))
+            .map(href => decodeURIComponent(href.split("/").pop()))
+            .sort((a, b) => a.localeCompare(b));
+
+          let optionsOut = "";
+          for (let nome of nomiFile) {
+            optionsOut += `<option value="${escapeHtml(nome)}">${escapeHtml(nome)}</option>`;
+          }
+          selectPretest.innerHTML = optionsOut;
+
+          if (nomiFile.length > 0) {
+            caricaContenutoFile(nomiFile[0]);
+          }
+        })
+        .catch(err => console.error("Errore lettura cartella:", err));
+    }
+
+    // SECONDA FUNZIONE: apre il JSON, salva i dati e stampa le domande
+    function caricaContenutoFile(nomeFile) {
+      risultatoFinale.style.display = "none";
+      risultatoFinale.innerHTML = "";
+
+      fetch(`./pretest/${nomeFile}`)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error!: ${response.status}`);
+          return response.json();
+        })
+        .then(testo => {
+          domandeCorrenti = testo;
+          let out = "";
+
+          testo.forEach((tes, index) => {
+            const numDomanda = index + 1;
+            const codiceSicuro = escapeHtml(tes.codice);
+
+            out += `<div class="domanda-box" id="box-domanda-${index}">
+                      <h2>Domanda ${numDomanda}</h2>
+                      <p class="testo-domanda">${escapeHtml(tes.domanda)}</p>`;
+
+            if (tes.codice !== null && tes.codice !== "") {
+              out += `<h2>Codice</h2>
+                      <pre><code>${codiceSicuro}</code></pre>`;
+            }
+
+            out += `<h2>Opzioni</h2>`;
+
+            // Stampa tutte le opzioni del JSON
+            tes.opzioni.forEach((o, optIndex) => {
+              const radioId = `risposta_${index}_${optIndex}`;
+              out += `
+                <div class="opzione-riga" id="riga_${index}_${optIndex}">
+                  <input type="radio" id="${radioId}" name="domanda_${index}" value="${optIndex}">
+                  <label for="${radioId}">${escapeHtml(o)}</label>
+                </div>`;
+            });
+
+            // Opzione "Nessuna risposta" selezionata di default
+            const noAnswerId = `risposta_${index}_none`;
+            out += `
+              <div class="opzione-riga">
+                <input type="radio" id="${noAnswerId}" name="domanda_${index}" value="no_answer" checked>
+                <label for="${noAnswerId}"><em>Nessuna risposta</em></label>
+              </div>
+              <div class="feedback-risposta" id="feedback-${index}"></div>
+            </div>`;
+          });
+
+          placeholder.innerHTML = out;
+        })
+        .catch(err => console.error("Errore lettura file:", err));
+    }
+
+    // TERZA FUNZIONE: controlla le risposte all'invio del form
+    quizForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (domandeCorrenti.length === 0) return;
+
+      let corrette = 0;
+      let sbagliate = 0;
+      let senzaRisposta = 0;
+
+      domandeCorrenti.forEach((tes, index) => {
+        const righeDomanda = document.querySelectorAll(`#box-domanda-${index} .opzione-riga`);
+        righeDomanda.forEach(riga => riga.classList.remove("opzione-corretta", "opzione-sbagliata"));
+
+        const feedbackEl = document.getElementById(`feedback-${index}`);
+        feedbackEl.style.display = "none";
+        feedbackEl.textContent = "";
+
+        const radioSelezionato = document.querySelector(`input[name="domanda_${index}"]:checked`);
+
+        if (!radioSelezionato || radioSelezionato.value === "no_answer") {
+          senzaRisposta++;
+          feedbackEl.style.display = "block";
+          feedbackEl.textContent = `Risposta esatta: ${tes.risposta_esatta}`;
+        } else {
+          const optIndex = parseInt(radioSelezionato.value, 10);
+          const rispostaUtente = tes.opzioni[optIndex];
+          const rigaSelezionata = document.getElementById(`riga_${index}_${optIndex}`);
+
+          if (rispostaUtente === tes.risposta_esatta) {
+            corrette++;
+            rigaSelezionata.classList.add("opzione-corretta");
+          } else {
+            sbagliate++;
+            rigaSelezionata.classList.add("opzione-sbagliata");
+            feedbackEl.style.display = "block";
+            feedbackEl.textContent = `Risposta esatta: ${tes.risposta_esatta}`;
+          }
+        }
+      });
+
+      risultatoFinale.style.display = "block";
+      risultatoFinale.innerHTML = `
+        <p><strong>Punteggio totale: ${corrette} / ${domandeCorrenti.length}</strong></p>
+        <p style="color: #137333;">Risposte corrette: ${corrette}</p>
+        <p style="color: #d93025;">Risposte sbagliate: ${sbagliate}</p>
+        <p>Senza risposta: ${senzaRisposta}</p>
+      `;
+    });
+
+    selectPretest.addEventListener("change", function () {
+      caricaContenutoFile(this.value);
+    });
+
+    caricaNomiFile();
+  </script>
+</body>
+</html>

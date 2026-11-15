@@ -1,0 +1,111 @@
+[
+  {
+    "domanda": "Siano `a` ed `f` definite come segue, qual è il tipo di `a[0]` dopo l'esecuzione di `a.sort(key=f)`?",
+    "codice": "a = [100, [8, 'quattro'], 6, (3, 11, 28), 9]\n\ndef f(e):\n    if type(e) != type(0):\n        return e[0]\n    else:\n        return e",
+    "opzioni": [
+      "Lista",
+      "Tupla",
+      "Intero"
+    ],
+    "risposta_esatta": "Tupla"
+  },
+  {
+    "domanda": "Sia `n` un intero maggiore di 6, qual è il risultato di `enigma(n)`?",
+    "codice": "def enigma(n):\n    a = list(range(n))\n    A = set(a)\n    if len(A) > 0:\n        B = set(a * 6)\n        return 1 + enigma(len(B - A))\n    else:\n        return 0",
+    "opzioni": [
+      "n",
+      "1",
+      "0",
+      "6"
+    ],
+    "risposta_esatta": "1"
+  },
+  {
+    "domanda": "`a` e `b` sono due liste concatenate contenenti interi e `d` un dizionario, inizialmente vuoto, implementato con liste di trabocco. Gli elementi di `d` sono coppie `(k, v)` dove la chiave `k` è di tipo intero e la chiave `v` è di tipo puntatore. Vengono eseguite le seguenti operazioni:\n- per ogni elemento `x` di `a`, la coppia `(x, NULL)` viene inserita in `d`;\n- per ogni elemento `x` di `b`, la coppia `(x, NULL)` viene inserita in `d`.\n\nSe `a` contiene tutti e soli gli elementi di un insieme `A` e `b` contiene tutti e soli gli elementi di un insieme `B`, quanti elementi contiene `d`?",
+    "codice": null,
+    "opzioni": [
+      "|A ∪ B|",
+      "|A ∩ B|",
+      "|A - B|",
+      "|A| + |B|"
+    ],
+    "risposta_esatta": "|A ∪ B|"
+  },
+  {
+    "domanda": "Se `a` è un intero e `b` una stringa cosa restituisce `maximum(a, b)`?",
+    "codice": "def maximum(x, y):\n    if x > len(y):\n        mx = x\n    else:\n        mx = y\n    return mx",
+    "opzioni": [
+      "Un intero",
+      "Una stringa",
+      "Un numero o una stringa"
+    ],
+    "risposta_esatta": "Un numero o una stringa"
+  },
+  {
+    "domanda": "Sia `n` un intero positivo maggiore di 1000 e `a = [1] * n`. Qual è la lunghezza di `a` dopo l'esecuzione di `remitems(a)`?",
+    "codice": "def remitems(a):\n    i = 1\n    while i < len(a):\n        if a[i] in a[:i]:\n            del a[i]\n        i += 1",
+    "opzioni": [
+      "n",
+      "circa n/2",
+      "1",
+      "0"
+    ],
+    "risposta_esatta": "circa n/2"
+  },
+  {
+    "domanda": "Sia `a` una stringa di lunghezza `n > 1`, qual è la lunghezza di `f(a)` dove `f()` è la funzione C così definita?",
+    "codice": "char *f(char *a) {\n    int i, n = strlen(a);\n    char *b = malloc(n + 1);\n    for (i = 0; i < n / 2; i++) {\n        b[i] = a[n - i];\n    }\n    return b;\n}",
+    "opzioni": [
+      "n",
+      "n+1",
+      "0",
+      "Circa n/2"
+    ],
+    "risposta_esatta": "0"
+  },
+  {
+    "domanda": "Qual è il costo computazionale della seguente funzione C in termini di memoria supplementare utilizzata?",
+    "codice": "int f(int n) {\n    int i, j;\n    int *a = malloc(sizeof(int) * n);\n    int *b;\n    for (i = 1; i < n; i++) {\n        b = malloc(sizeof(int) * 2);\n        b[0] = i;\n        b[1] = i + 1;\n        a[i] = b[0] + b[1];\n    }\n    free(a);\n    free(b);\n    return a[n - 1];\n}",
+    "opzioni": [
+      "Lineare in n",
+      "Quadratica in n",
+      "Cubica in n",
+      "Costante"
+    ],
+    "risposta_esatta": "Lineare in n"
+  },
+  {
+    "domanda": "Si consideri la seguente funzione C:\n\nSia `a` un array di `n > 0` interi tale che `a[i] = i` per ogni indice `i` e sia `0 <= k < n`. Dopo l'invocazione di `f(a, k)` qual è il valore di `a[k]`?",
+    "codice": "void f(int *x, int i) {\n    *(x + x[i]) = 2 * (*(x + i));\n}",
+    "opzioni": [
+      "k",
+      "2k",
+      "0",
+      "n"
+    ],
+    "risposta_esatta": "2k"
+  },
+  {
+    "domanda": "`a` è una lista di `n` interi ordinati in modo crescente e `k` un intero. Qual è il costo computazionale dell'algoritmo più efficiente per ordinare `a.append(k)`?",
+    "codice": null,
+    "opzioni": [
+      "Quadratico in n",
+      "Ordine di n log(n)",
+      "Lineare in n",
+      "Costante",
+      "Lineare in k"
+    ],
+    "risposta_esatta": "Lineare in n"
+  },
+  {
+    "domanda": "Sia `a` una lista concatenata contenente `n` interi pari ordinati in modo crescente seguiti da `n` interi dispari ordinati in modo crescente. Qual è il costo computazionale dell'algoritmo più efficiente per ordinare tutti gli elementi di `a` su una seconda lista?",
+    "codice": null,
+    "opzioni": [
+      "ordine di n",
+      "ordine di n log (n)",
+      "quadratico in n",
+      "costante"
+    ],
+    "risposta_esatta": "ordine di n"
+  }
+]

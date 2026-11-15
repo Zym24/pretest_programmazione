@@ -1,0 +1,124 @@
+[
+  {
+    "domanda": "Quale delle seguenti affermazioni è vera riguardo alla funzione hash in una implementazione di dizionario con liste di trabocco?",
+    "codice": null,
+    "opzioni": [
+      "Il valore hash di una chiave è casuale",
+      "Il valore restituito dalla funzione hash dipende dalla chiave e dalla dimensione del numero di liste di trabocco",
+      "Se gli hash di due chiavi sono uguali allora le chiavi sono uguali",
+      "Se le chiavi sono di tipo intero, il valore di 10 deve essere vicino al valore hash di 9",
+      "Due chiavi diverse hanno sempre hash diverso"
+    ],
+    "risposta_esatta": "Il valore restituito dalla funzione hash dipende dalla chiave e dalla dimensione del numero di liste di trabocco"
+  },
+  {
+    "domanda": "Cosa stampa il seguente programma?",
+    "codice": "def enigma( L ):\n    n = 1\n    if type(L) == list:\n        for x in L:\n            n += enigma(x)\n    return n\n\nL = [0, [1], [2,[3]]]\nprint(enigma(L))",
+    "opzioni": [
+      "1",
+      "4",
+      "0",
+      "7",
+      "8"
+    ],
+    "risposta_esatta": "8"
+  },
+  {
+    "domanda": "Cosa stampa il seguente frammento di codice C?",
+    "codice": "int a = 5;\nint b = 10;\nint *p = &a;\nint *q = p;\n\n*q = *q + b;\np = &b;\n*p = *p - a;\n\nprintf(\"%d %d\\n\", a, b);",
+    "opzioni": [
+      "10 -5",
+      "10 0",
+      "15 5",
+      "15 0",
+      "10 5",
+      "15 -5"
+    ],
+    "risposta_esatta": "15 -5"
+  },
+  {
+    "domanda": "Assumendo `n < m`, quanto vale `c` al termine del seguente frammento di codice?",
+    "codice": "c = 0\nfor x, y in zip( range(n), range(m) ):\n    c += 1",
+    "opzioni": [
+      "m-1",
+      "n",
+      "n+m",
+      "m",
+      "0",
+      "n-1"
+    ],
+    "risposta_esatta": "n"
+  },
+  {
+    "domanda": "Siano `d0` e `d1` due dizionari Python, il primo di lunghezza `n` ed il secondo di lunghezza `m`. Sia `du` il dizionario che ha per chiavi l'unione delle chiavi di `d0` e `d1`. Quale delle seguenti affermazioni è corretta riguardo alla complessità temporale della costruzione di `du`?",
+    "codice": null,
+    "opzioni": [
+      "La costruzione di du richiede una fase preliminare di ordinamento delle chiavi",
+      "Il dizionario finale contiene n+m chiavi.",
+      "La complessità della costruzione di du è lineare in n+m",
+      "La complessità della costruzione di du è lineare in min(n, m)",
+      "La complessità della costruzione di du è lineare in n-m",
+      "Sono sempre necessari n·m confronti"
+    ],
+    "risposta_esatta": "La complessità della costruzione di du è lineare in n+m"
+  },
+  {
+    "domanda": "Qual è la complessità temporale dell'ordinamento di 10 tuple di interi di dimensione `n`?",
+    "codice": null,
+    "opzioni": [
+      "Quadratica in n",
+      "n log(n)",
+      "Costante",
+      "Lineare in n"
+    ],
+    "risposta_esatta": "Lineare in n"
+  },
+  {
+    "domanda": "Quale delle seguenti affermazioni è vera riguardo al seguente frammento di codice Python?",
+    "codice": "L = list( range(100) )\nfor i in range(150):\n    print( L[i] )",
+    "opzioni": [
+      "viene generato un errore in compilazione",
+      "il codice non genera eccezioni",
+      "il codice genera IndexError e non stampa nulla",
+      "il codice genera una eccezione generica",
+      "il codice genera IndexError dopo aver stampato 99",
+      "il codice genera IndexError dopo aver stampato 100"
+    ],
+    "risposta_esatta": "il codice genera IndexError dopo aver stampato 99"
+  },
+  {
+    "domanda": "Si consideri il problema della fermata, che consiste nello stabilire se un programma, eseguito con un certo input, termina oppure continua l'esecuzione indefinitamente. Quale delle seguenti affermazioni è vera?",
+    "codice": null,
+    "opzioni": [
+      "Non è noto un algoritmo di complessità polinomiale ma ne esiste uno di complessità esponenziale",
+      "Il problema è indecidibile",
+      "Può essere risolto usando la ricorsione",
+      "Il problema è intrattabile"
+    ],
+    "risposta_esatta": "Il problema è indecidibile"
+  },
+  {
+    "domanda": "Sapendo che un `char` occupa 1 byte, un `int` 4 byte e un puntatore 8 byte, cosa stampa il seguente frammento di codice C?",
+    "codice": "char a[] = \"012345678\";\nchar *p = a;\nint n = sizeof(p)/sizeof(char);\nprintf(\"%d, %d\\n\", n, strlen(p));",
+    "opzioni": [
+      "8, 8",
+      "10, 9",
+      "9, 10",
+      "9, 9",
+      "9, 8",
+      "8, 9"
+    ],
+    "risposta_esatta": "8, 9"
+  },
+  {
+    "domanda": "Sia `L` una lista di `n` interi, quale è la complessità temporale nel caso medio dell'operatore Python `in` utilizzato su `L`?",
+    "codice": null,
+    "opzioni": [
+      "Lineare in n",
+      "Costante",
+      "Quadratico in n",
+      "Logaritmico in n"
+    ],
+    "risposta_esatta": "Lineare in n"
+  }
+]

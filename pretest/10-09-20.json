@@ -1,0 +1,113 @@
+[
+    {
+        "domanda": "Sia `n` un intero positivo, qual è il valore di `s` al termine del seguente codice Python?",
+        "codice": "a = list(range(n))\nb = a[::-1]\ns = 0\nfor x in zip(a, b):\n    s += x[0] + x[1]",
+        "opzioni": [
+            "n(n-1)",
+            "n^2",
+            "2n^3",
+            "n(n-1)/2"
+        ],
+        "risposta_esatta": "n(n-1)"
+    },
+    {
+        "domanda": "`a` e `b` sono due liste concatenate contenenti interi; `d0`, `d1` e `d2` tre dizionari, inizialmente vuoti, implementati con liste di trabocco. Gli elementi dei dizionari sono coppie `(k, v)` dove la chiave `k` è di tipo intero e la chiave `v` è di tipo puntatore. Vengono eseguite le seguenti operazioni:\n• per ogni elemento `x` di `a`, la coppia `(x, NULL)` viene inserita in `d0`;\n• per ogni elemento `x` di `b`, la coppia `(x, NULL)` viene inserita in `d1`;\n• per ogni chiave `k` in `d0` se questa non è in `d1`, la coppia `(k, NULL)` viene inserita in `d2`;\nSe `a` contiene `n0` elementi e `b` ne contiene `n1`, qual è il costo computazionale (caso medio) per creare `d2`?",
+        "codice": null,
+        "opzioni": [
+            "Lineare in max(n0, n1)",
+            "Quadratico in (n0 + n1)",
+            "Lineare nella dimensione di d2",
+            "Lineare in n0"
+        ],
+        "risposta_esatta": "Lineare in max(n0, n1)"
+    },
+    {
+        "domanda": "Si consideri il problema di ordinare una sequenza contenente `2n+3` interi maggiori di `4n+4` e minori di `6n+8`. Sia `A` un algoritmo efficiente che risolve il problema, qual è l'ordine di grandezza del suo costo computazionale?",
+        "codice": null,
+        "opzioni": [
+            "n",
+            "n log(n)",
+            "n^2",
+            "Costante"
+        ],
+        "risposta_esatta": "n"
+    },
+    {
+        "domanda": "Sia `n` un intero maggiore di `1000` e `n0` e `n1` interi positivi minori di `n`, cosa viene stampato dal seguente codice Python?",
+        "codice": "k = ''\nd0, d1 = {}, {}\nfor i in range(n):\n    d0[k + 'x'] = i\n    d1[i] = k + 'x'\n    k += 'x'\nprint(d0[d1[n0] + d1[n1]])",
+        "opzioni": [
+            "n0 + n1 + 1",
+            "n0 + n1",
+            "n0 + n1 + 2",
+            "n0 + n1 - 1"
+        ],
+        "risposta_esatta": "n0 + n1 + 1"
+    },
+    {
+        "domanda": "`a` è una lista concatenata implementata in C contenente almeno `1000` nodi. I nodi della lista sono definiti dalla seguente struct:\n\ndove `succ` e `prec` sono, rispettivamente, gli indirizzi del nodo che segue e del nodo che precede quello in questione. Il campo `succ` dell'ultimo nodo ed il campo `prec` del primo nodo valgono `NULL`.\nSi consideri la seguente funzione:\n\nSia `b` il puntatore all'ultimo nodo della lista `a`, cosa restituisce `ListaCross(a, b)`?",
+        "codice": "struct nodo {\n    int valore;\n    struct nodo *succ;\n    struct nodo *prec;\n};\ntypedef struct nodo nodo;\n\nnodo *ListaCross(nodo *x, nodo *y) {\n    while (x != y) {\n        x = x->succ;\n        y = y->prec;\n    }\n    return y;\n}",
+        "opzioni": [
+            "Qualche volta NULL",
+            "Sempre NULL",
+            "Sempre un puntatore non NULL",
+            "Qualche volta un errore in run-time"
+        ],
+        "risposta_esatta": "Qualche volta un errore in run-time"
+    },
+    {
+        "domanda": "Sia `a` una lista Python di `n > 1000` elementi e `k` un intero positivo minore di `sqrt(n)`, qual è la lunghezza di `a[k:-k]`?",
+        "codice": null,
+        "opzioni": [
+            "n - 2k",
+            "2k",
+            "k",
+            "2(n - k)"
+        ],
+        "risposta_esatta": "n - 2k"
+    },
+    {
+        "domanda": "Qual è il costo computazionale della seguente funzione C in funzione della lunghezza della stringa di input?",
+        "codice": "#include <string.h>\n\nvoid f(char *x) {\n    int i = 0;\n    while (i < strlen(x)) {\n        x[i] = '0';\n        i++;\n    }\n}",
+        "opzioni": [
+            "Quadratico",
+            "Lineare",
+            "Costante",
+            "Cubico"
+        ],
+        "risposta_esatta": "Quadratico"
+    },
+    {
+        "domanda": "Si consideri il problema di ordinare in base al tipo una lista Python contenente `n` elementi di `k` tipi diversi. Sia `A` una funzione efficiente che risolve il problema. Assumendo `k` molto più piccolo di `n`, qual è l'ordine di grandezza del costo di `A`?",
+        "codice": null,
+        "opzioni": [
+            "n",
+            "n^2",
+            "n log(n)",
+            "Costante",
+            "k"
+        ],
+        "risposta_esatta": "n"
+    },
+    {
+        "domanda": "Si consideri la seguente funzione nel linguaggio C:\n\nQuale tra le seguenti affermazioni è vera?",
+        "codice": "#include <stdlib.h>\n\nint *f(int n){\n    int i, *a;\n    if (n < 35)\n        n = 35;\n    a = malloc(n);\n    for (i = 0; i < n; i++){\n        a[i] = i;\n    }\n    return a;\n}",
+        "opzioni": [
+            "L'esecuzione di f può generare errori in run-time",
+            "L'esecuzione di f genera errori in runtime",
+            "L'esecuzione di f non genera errori in runtime",
+            "L'esecuzione di f può generare un loop infinito"
+        ],
+        "risposta_esatta": "L'esecuzione di f può generare errori in run-time"
+    },
+    {
+        "domanda": "La lista `a` contiene `n > 1000` elementi di cui `k < n` sono interi. Gli interi in `a` sono tutti diversi e tra questi c'è `0`. Che posizione occupa `0` in `a` dopo l'esecuzione del seguente codice Python?",
+        "codice": "def f(x):\n    if type(x) == type(0):\n        return x\n    else:\n        return -1\n\nsorted(a, key=f)",
+        "opzioni": [
+            "La posizione iniziale",
+            "n - k",
+            "n - k + 1",
+            "0"
+        ],
+        "risposta_esatta": "La posizione iniziale"
+    }
+]

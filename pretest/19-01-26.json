@@ -1,0 +1,124 @@
+[
+  {
+    "domanda": "Sia `s` una stringa di lunghezza `n` memorizzata in un array di dimensione `m`, qual è la complessità del seguente ciclo?",
+    "codice": "for(int i = 0; i < strlen(s); i++){\n    s[i] = ' ';\n}",
+    "opzioni": [
+      "O(m**2)",
+      "O(n)",
+      "O(m)",
+      "O(n**2)",
+      "O(1)"
+    ],
+    "risposta_esatta": "O(n**2)"
+  },
+  {
+    "domanda": "Qual è il valore della variabile `n` al termine del seguente frammento di codice?",
+    "codice": "n = sscanf(stringa_da_convertire, \"%d-%d-%d\", &giorno, &mese, &anno);",
+    "opzioni": [
+      "0 oppure 1",
+      "il valore di giorno-mese-anno",
+      "al massimo 3",
+      "il valore della variabile giorno",
+      "da 0 a 2"
+    ],
+    "risposta_esatta": "al massimo 3"
+  },
+  {
+    "domanda": "Si consideri il seguente codice C, dire quale delle affermazioni è vera.",
+    "codice": "int main(){\n    int a[10] = {0};\n    int *p = a+1;\n}",
+    "opzioni": [
+      "C'è un errore di tipo",
+      "p punta all'elemento successivo di a",
+      "Il valore dell'elemento puntato da p è 1",
+      "p punta all'indirizzo 1",
+      "p punta all'indirizzo successivo di a"
+    ],
+    "risposta_esatta": "p punta all'elemento successivo di a"
+  },
+  {
+    "domanda": "Cosa viene stampato dal seguente frammento di codice?",
+    "codice": "def enigma(L):\n    if type(L) != list:\n        return 1\n    else:\n        n = 0\n        for x in L:\n            n += enigma(x)\n        return n\n\nL = [[[]], [], [[]], []]\nprint(enigma(L))",
+    "opzioni": [
+      "0",
+      "7",
+      "1",
+      "2",
+      "3"
+    ],
+    "risposta_esatta": "0"
+  },
+  {
+    "domanda": "Qual è la dimensione del dizionario creato dal seguente frammento di codice?",
+    "codice": "n, d = 100, {}\nfor x in range(n):\n    k = str(x/n)[:2]\n    d[k] = x",
+    "opzioni": [
+      "1",
+      "2",
+      "0",
+      "50",
+      "Solleva un errore",
+      "n"
+    ],
+    "risposta_esatta": "1"
+  },
+  {
+    "domanda": "Quale delle seguenti affermazioni descrive correttamente la complessità spaziale dell'algoritmo Merge Sort?",
+    "codice": null,
+    "opzioni": [
+      "È lineare a causa della ricorsione",
+      "È logaritmica a causa della ricorsione",
+      "È lineare a causa dell'uso di una lista di appoggio",
+      "È costante",
+      "È lineare per la lista di input",
+      "È lineare a causa della lista di output"
+    ],
+    "risposta_esatta": "È lineare a causa dell'uso di una lista di appoggio"
+  },
+  {
+    "domanda": "Data una lista Python contenente `n` elementi, qual è la complessità temporale dell'operazione di append di una nuova lista di dimensione `n`?",
+    "codice": null,
+    "opzioni": [
+      "Logaritmica",
+      "Costante nel caso peggiore",
+      "Lineare",
+      "Costante ammortizzata",
+      "Quadratica"
+    ],
+    "risposta_esatta": "Costante ammortizzata"
+  },
+  {
+    "domanda": "Sia `t` una tupla contenente stringhe e numeri. Qual è il risultato di",
+    "codice": "t <= 2*t",
+    "opzioni": [
+      "Solleva sempre un errore",
+      "False",
+      "Dipende dal contenuto di t",
+      "True",
+      "Potrebbe sollevare un errore"
+    ],
+    "risposta_esatta": "True"
+  },
+  {
+    "domanda": "Data una lista Python contenente `n` elementi, qual è la complessità temporale dell'operazione di append di un intero?",
+    "codice": null,
+    "opzioni": [
+      "Costante ammortizzata",
+      "Quadratica",
+      "Costante nel caso peggiore",
+      "Logaritmica",
+      "Lineare"
+    ],
+    "risposta_esatta": "Costante ammortizzata"
+  },
+  {
+    "domanda": "Quale affermazione è vera riguardo a una copia superficiale di una lista?",
+    "codice": null,
+    "opzioni": [
+      "Le liste non si possono copiare",
+      "Gli elementi interni mutabili sono condivisi",
+      "Crea sempre una copia profonda",
+      "È equivalente a un'assegnazione",
+      "Gli elementi interni mutabili sono rimossi"
+    ],
+    "risposta_esatta": "Gli elementi interni mutabili sono condivisi"
+  }
+]

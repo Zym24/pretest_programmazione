@@ -1,0 +1,123 @@
+[
+    {
+        "domanda": "Sia `a` una lista di `n` dizionari ciascuno contenente `c` elementi a valori `None`. Si consideri il seguente codice:\n\nLa funzione `unione` ritorna un dizionario che contiene l'unione delle chiavi dei dizionari in input.\n\nAssumendo che `c` sia una costante, qual è la complessità temporale del precedente codice?",
+        "codice": "d = {}\nfor i in range(len(a)):\n  d = unione(d, a[i])",
+        "opzioni": [
+            "O(n**3)",
+            "O(2**n)",
+            "O(n**2)",
+            "O(n)",
+            "O(n**2 log n)",
+            "O(n log n)"
+        ],
+        "risposta_esatta": "O(n**2)"
+    },
+    {
+        "domanda": "Sia `a` una lista di interi, in quale casi tra quelli elencati la seguente espressione viene valutata `True` ?",
+        "codice": "2*sorted(a) <= a",
+        "opzioni": [
+            "Se `a` è non ordinata",
+            "Mai",
+            "Sempre",
+            "Solo se `a` è vuota",
+            "Solo se `a` è ordinata"
+        ],
+        "risposta_esatta": "Solo se `a` è vuota"
+    },
+    {
+        "domanda": "Cosa succede eseguendo il seguente programma?",
+        "codice": "#include <stdio.h>\n<#include <string.h>\n\nstruct str {\n    char *a;\n    int n;\n};<br>typedef struct str str;<br><br>str new_str(){\n    str s;\n    char x[] = \"malloc\";\n    s.a = x;\n    s.n = strlen(x);\n    return s;\n}\n\nint main(){\n    str b = new_str();\n    printf(\"%s\\n\", b.a);\n    return 6;\n}",
+        "opzioni": [
+            "Stampa l'intero 6",
+            "Stampa la stringa malloc",
+            "Errore in compilazione",
+            "Un ciclo infinito",
+            "Qualcosa di indefinito"
+        ],
+        "risposta_esatta": "Qualcosa di indefinito"
+    },
+    {
+        "domanda": "Si consideri una lista `a` contenente `n` interi ordinati dal più piccolo al più grande. Si definisca `b` come `b = [e] + a`. Qual è il costo temporale del bubble-sort sulla lista `b`?",
+        "codice": null,
+        "opzioni": [
+            "O(1)",
+            "O(n)",
+            "O(n log n)",
+            "O(n**2)",
+            "O((n+1)**2)"
+        ],
+        "risposta_esatta": "O(n)"
+    },
+    {
+        "domanda": "Cosa succede compilando il seguente codice?",
+        "codice": "#include <stdio.h>\n\nint main(){\n    printf(\"%f\\n\", f(7));\n}\n\nfloat f(n){\n    return 7/2.0;\n}",
+        "opzioni": [
+            "La compilazione non termina, deve essere interrotta manualmente",
+            "La compilazione termina con successo",
+            "La compilazione termina con successo riportando un warning",
+            "La compilazione termina con successo ma il codice contiene un errore semantico",
+            "La compilazione viene iterrotta riportando un errore"
+        ],
+        "risposta_esatta": "La compilazione viene iterrotta riportando un errore"
+    },
+    {
+        "domanda": "Si assuma che `a` e `b` siano due dizionari, qual è la complessità temporale nel caso medio dell'operazione che restituisce la lista delle chiavi in comune tra `a` e `b`?",
+        "codice": null,
+        "opzioni": [
+            "O(min(len(a), len(b)))",
+            "O(max(len(a), len(b)))",
+            "O(len(b)//len(a))",
+            "O(len(a)*len(b))",
+            "O(len(a)//len(b))"
+        ],
+        "risposta_esatta": "O(min(len(a), len(b)))"
+    },
+    {
+        "domanda": "Sia `n` un intero positivo maggiore di 1876, qual è il valore di `c` al termine del seguente frammento di codice?",
+        "codice": "c = n\nfor i in range(n):\n    c -= 1\n    i += 1",
+        "opzioni": [
+            "0",
+            "n",
+            "n//2 - 1",
+            "n//2",
+            "n//2 + 1"
+        ],
+        "risposta_esatta": "0"
+    },
+    {
+        "domanda": "Si consideri il seguente codice\n\nQual è il valore di `p`?",
+        "codice": "int main(){\n    char a[100] = {11};\n    char *p = &(a[50]);\n}",
+        "opzioni": [
+            "11",
+            "indefinito",
+            "a+50",
+            "50",
+            "0"
+        ],
+        "risposta_esatta": "a+50"
+    },
+    {
+        "domanda": "Sia `n` un intero positivo maggiore di 1876. si consideri il valore di `c` al termine del seguente frammento di codice, quale tra le affermazioni elencate (espresse in codice C) è vera?",
+        "codice": "int c = n;\nfor(int i = 0; i < n; i++){\n    c -= 1;\n    i += 1;\n}",
+        "opzioni": [
+            "c == n/2",
+            "c == (n/2 + 1)",
+            "c == (n/2 - 1)",
+            "c == n",
+            "c == 0"
+        ],
+        "risposta_esatta": "c == n/2"
+    },
+    {
+        "domanda": "La lista `a` contiene `n` tuple costituite da due elementi ciascuna. Il primo è una etichetta che può valere `0` oppure `1`. Si vuole ordinare `a` in modo che le tuple con etichetta `0` precedano quelle con etichetta `1`. Qual è il costo temporale del miglior algoritmo che risolva il problema?",
+        "codice": null,
+        "opzioni": [
+            "O(1)",
+            "O(n)",
+            "O(n**2)",
+            "O(log n)",
+            "O(n log n)"
+        ],
+        "risposta_esatta": "O(n)"
+    }
+]

@@ -1,0 +1,111 @@
+[
+  {
+    "domanda": "Sia `a` una stringa, quale tra le chiamate alla funzione `enigma` restituisce sempre `True`?",
+    "codice": "def enigma(x):\n    if x > 100 or x < 0:\n        return [1]\n    else:\n        return [1] + enigma(x + 1)",
+    "opzioni": [
+      "enigma(a + a[::-1])",
+      "enigma(2 * a)",
+      "enigma(a[:2])"
+    ],
+    "risposta_esatta": "enigma(a + a[::-1])"
+  },
+  {
+    "domanda": "La funzione `binsearch_iter` implementa l'algoritmo di ricerca binaria in modo iterativo e la funzione `binsearch_ric` implementa lo stesso algoritmo in modo ricorsivo. Quale delle seguenti affermazioni è sempre vera?",
+    "codice": null,
+    "opzioni": [
+      "binsearch_ric è più efficiente rispetto al tempo",
+      "le due funzioni hanno lo stesso costo rispetto alla memoria supplementare utilizzata",
+      "binsearch_iter è più efficiente dal punto di vista della memoria supplementare utilizzata",
+      "binsearch_iter è più efficiente rispetto al tempo"
+    ],
+    "risposta_esatta": "binsearch_iter è più efficiente dal punto di vista della memoria supplementare utilizzata"
+  },
+  {
+    "domanda": "Sia `A` un array dinamico di capacità `c` e contenente `n = c` elementi. Su `A` si eseguono `2n` operazioni alternate di inserimento e cancellazione (la prima è un inserimento). Quante volte viene ridimensionato `A`?",
+    "codice": null,
+    "opzioni": [
+      "Mai",
+      "Una volta",
+      "2n volte",
+      "n volte"
+    ],
+    "risposta_esatta": "Una volta"
+  },
+  {
+    "domanda": "Sia `n` un intero `> 1069`, quanto vale `c` al termine del seguente frammento di codice?",
+    "codice": "c = 0\nfor i in range(n):\n    for j in range(n - i):\n        c += 1",
+    "opzioni": [
+      "n*n",
+      "n*n/2",
+      "n(n+1)/2",
+      "n(n-1)/2"
+    ],
+    "risposta_esatta": "n(n+1)/2"
+  },
+  {
+    "domanda": "Sia `a` un array di `n` float tutti compresi tra `0` e `1`, qual è il costo dell'algoritmo migliore per ordinare `a`?",
+    "codice": null,
+    "opzioni": [
+      "quadratico in n",
+      "ordine di nlog(n)",
+      "ordine di log(n)",
+      "lineare in n"
+    ],
+    "risposta_esatta": "lineare in n"
+  },
+  {
+    "domanda": "Si consideri la seguente funzione C:\n\nSia `a` una stringa di lunghezza `n`, qual è il tempo di esecuzione di `f(a)`?",
+    "codice": "int f(char *x) {\n    int i;\n    for (i = 0; i < strlen(x); i++)\n        printf(\"%s\\n\", x + i);\n}",
+    "opzioni": [
+      "Lineare in n",
+      "Quadratico in n",
+      "Cubico in n",
+      "Costante"
+    ],
+    "risposta_esatta": "Quadratico in n"
+  },
+  {
+    "domanda": "Sia `a` una stringa di lunghezza `n`, `d` un dizionario di dimensione `m` e `s` la struttura dati ottenuta dal seguente codice. Dire quale tra le seguenti affermazioni è sempre vera.",
+    "codice": "s = set()\nfor c in a:\n    s.add(c)\nfor k in d:\n    s.add(k)",
+    "opzioni": [
+      "len(s) < n+m",
+      "len(s) <= n+m",
+      "len(s) > max(n,m)",
+      "len(s) = n+m"
+    ],
+    "risposta_esatta": "len(s) <= n+m"
+  },
+  {
+    "domanda": "Siano `v` e `p` due interi positivi con `p < v`, cosa restituisce `f(v, p)`?",
+    "codice": "int f(int a, int p) {\n    int i;\n    int **b = malloc(a * sizeof(int*));\n    b[0] = &a;\n    for (i = 1; i < a; i++) {\n        b[i] = b[i - 1];\n    }\n    a = p;\n    return *b[p];\n}",
+    "opzioni": [
+      "0",
+      "il valore di p",
+      "il valore di v",
+      "un indirizzo"
+    ],
+    "risposta_esatta": "il valore di p"
+  },
+  {
+    "domanda": "Sia `a` una lista di `n` interi, qual è il costo computazionale di `f(a)` in funzione di `n`?",
+    "codice": "def f(a):\n    n = len(a)\n    if n >= 2:\n        f(a[:int(n/2)])",
+    "opzioni": [
+      "Tempo lineare in n, memoria costante.",
+      "Tempo e memoria lineari in n.",
+      "Tempo e memoria ordine di log(n).",
+      "Tempo ordine di log(n) memoria costante."
+    ],
+    "risposta_esatta": "Tempo e memoria lineari in n."
+  },
+  {
+    "domanda": "Sia `a` una lista di `n` numeri. La funzione `booh_min(a)` restituisce la coppia `(m, p)` dove `m` è il minimo in `a` e `p` è la sua posizione. Qual è il costo di `booh_min(a)` in termini di tempo?",
+    "codice": "def booh_min(a):\n    n = len(a)\n    for i in range(n):\n        if a[i] == min(a[i:]):\n            return a[i], i",
+    "opzioni": [
+      "Ordine di n nel caso peggiore, costante nel caso migliore",
+      "Sempre ordine di n*n",
+      "Ordine di n*n nel caso peggiore, ordine di n nel caso migliore",
+      "Sempre ordine di n."
+    ],
+    "risposta_esatta": "Ordine di n*n nel caso peggiore, ordine di n nel caso migliore"
+  }
+]

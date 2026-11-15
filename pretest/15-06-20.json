@@ -1,0 +1,102 @@
+[
+  {
+    "domanda": "Sia `a` una lista concatenata contenente `n` interi ordinati in modo crescente, qual è il costo computazionale della ricerca di una chiave `k` in `a`?",
+    "codice": null,
+    "opzioni": [
+      "costante",
+      "ordine di log(n)",
+      "lineare"
+    ],
+    "risposta_esatta": "lineare"
+  },
+  {
+    "domanda": "Cosa viene stampato dal seguente codice Python?",
+    "codice": "a = ['zero', 'one', 'two', 'three', 'four', 'five',\n     'six', 'seven', 'eight', 'nine', 'ten']\nd = {}\nfor i in range(len(a)):\n    d[a[i]] = i\nprint(a[d['one'] + 3 + d[a[4]]])",
+    "opzioni": [
+      "eight",
+      "8",
+      "Un errore"
+    ],
+    "risposta_esatta": "eight"
+  },
+  {
+    "domanda": "Esercizio 6\n`a` e `b` sono due liste concatenate contenenti interi e `d` un dizionario, inizialmente vuoto, implementato con liste di trabocco. Gli elementi di `d` sono coppie `(k, v)` dove la chiave `k` è di tipo intero e la chiave `v` è di tipo puntatore. Vengono eseguite le seguenti operazioni:\n- per ogni elemento `x` di `a`, la coppia `(x, NULL)` viene inserita in `d`;\n- per ogni elemento `x` di `b`, la coppia `(x, NULL)` viene inserita in `d`.\n\nSe `a` contiene `n` elementi e `b` ne contiene `m`, quanti elementi contiene `d`?",
+    "codice": null,
+    "opzioni": [
+      "almeno n+m",
+      "max(n,m)",
+      "meno di n+m+1"
+    ],
+    "risposta_esatta": "meno di n+m+1"
+  },
+  {
+    "domanda": "Sia `a` una stringa, qual è il risultato di `enigma(a)`?",
+    "codice": "def enigma(x):\n    if x == '':\n        return 1\n    else:\n        return 1 + enigma(x[1:])",
+    "opzioni": [
+      "len(a)",
+      "len(a)+1",
+      "una stringa formata da len(a) '1'"
+    ],
+    "risposta_esatta": "len(a)+1"
+  },
+  {
+    "domanda": "Qual è il costo computazionale della seguente funzione C?",
+    "codice": "void f(int n) {\n    int i, j;\n    for (i = 0; i < n; i++) {\n        j = i;\n        while (j < n) {\n            j++;\n        }\n        while (j > 0) {\n            j--;\n        }\n    }\n}",
+    "opzioni": [
+      "n",
+      "n^2",
+      "n^3"
+    ],
+    "risposta_esatta": "n^2"
+  },
+  {
+    "domanda": "`BubbleSort()` è una funzione Python che implementa la versione più ottimizzata dell'algoritmo bubble-sort: prende in input una lista di interi e la modifica ordinando i suoi elementi in modo crescente. Sia `a` una lista di `n` interi, qual è il costo computazionale (caso peggiore) della seguente funzione?",
+    "codice": "def MultSort(a, n):\n    for i in range(n):\n        BubbleSort(a)",
+    "opzioni": [
+      "Lineare",
+      "Quadratico",
+      "Cubico"
+    ],
+    "risposta_esatta": "Quadratico"
+  },
+  {
+    "domanda": "Sia `a` una stringa di lunghezza `n > 1`, cosa viene stampato dal seguente frammento di codice C?",
+    "codice": "int n = strlen(a);\nchar *b = a + n/2;\n*b = '\\0';\nprintf(\"%ld\\n\", strlen(a) - strlen(b));",
+    "opzioni": [
+      "un numero < 0",
+      "0",
+      "un numero > 0"
+    ],
+    "risposta_esatta": "un numero > 0"
+  },
+  {
+    "domanda": "Si consideri la seguente funzione C:\n\nSia `a` un array di `n > 0` interi tale che `a[i] = i` per ogni indice `i` e sia `0 <= k < n`. Dopo l'invocazione di `f(a, k)` qual è il valore di `a[k]`?",
+    "codice": "void f(int *x, int p) {\n    *(a + p) = 2 * p;\n}",
+    "opzioni": [
+      "k",
+      "2k",
+      "indefinito"
+    ],
+    "risposta_esatta": "2k"
+  },
+  {
+    "domanda": "Sia `n` un intero positivo e `0 <= k < n`, qual è il valore di `len(a[k])`?",
+    "codice": "a = ['x']\nfor i in range(n):\n    a.append('x' + a[-1])",
+    "opzioni": [
+      "k-1",
+      "k",
+      "k+1"
+    ],
+    "risposta_esatta": "k+1"
+  },
+  {
+    "domanda": "Sia `n` un intero positivo ed `f` definita come segue, qual è il risultato di `f(n)`?",
+    "codice": "def f(n):\n    a = list(range(n))\n    a.append(list(range(n, 2*n)))\n    a += list(range(2*n, 3*n))\n    return a[n] * a[n+1]",
+    "opzioni": [
+      "una lista",
+      "un intero",
+      "un errore"
+    ],
+    "risposta_esatta": "una lista"
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "domanda": "Quanto vale `n` al termine del seguente frammento di codice?",
+    "codice": "char x[] = \"1250\";\nint n = sscanf(x, \"%d\\n\", &n);",
+    "opzioni": [
+      "il numero digitato dall'utente",
+      "0",
+      "1",
+      "1250"
+    ],
+    "risposta_esatta": "1"
+  },
+  {
+    "domanda": "Quanto vale `c` al termine del seguente frammento di codice?",
+    "codice": "a = [3,2,5,4,5,6,7,6,7,5]\nd = {}\n\nc = 0\nfor x in a:\n    if x in d:\n        c += 1\n    else:\n        d[x] = None",
+    "opzioni": [
+      "3",
+      "7",
+      "10",
+      "1",
+      "4"
+    ],
+    "risposta_esatta": "4"
+  },
+  {
+    "domanda": "Qual è la lunghezza di `a` al termine del seguente frammento di codice?",
+    "codice": "char a[] = \"programmazione\";\nchar b[] = \"algoritmo\";\nint i;\n\nfor(i=0; b[i] != '\\0'; i++)\n    a[i] = b[i];",
+    "opzioni": [
+      "9",
+      "10",
+      "15",
+      "14"
+    ],
+    "risposta_esatta": "14"
+  },
+  {
+    "domanda": "Qual è il costo dell'algoritmo più efficiente che ordini `k` sequenze ordinate ciascuna di dimensione `n/k`?",
+    "codice": null,
+    "opzioni": [
+      "O(n)",
+      "O(n**2)",
+      "O(k*n)",
+      "O(n**k)",
+      "O(n/k)",
+      "O(n*log k)"
+    ],
+    "risposta_esatta": "O(n*log k)"
+  },
+  {
+    "domanda": "Sia `a` una lista Python di `n` interi e `b` una lista concatenata implementata in `C` avente gli stessi elementi di `a`. Siano `A(p)` e `B(p)` i costi dell'operazione di inserimento, rispettivamente in `a` e `b`, di un nuovo elemento in posizione `p`. Quale delle seguenti affermazioni è vera?",
+    "codice": null,
+    "opzioni": [
+      "B(p) è in O(p)",
+      "B(p) <= A(p)",
+      "A(p) è in O(p)",
+      "A(p) <= B(p)"
+    ],
+    "risposta_esatta": "B(p) è in O(p)"
+  },
+  {
+    "domanda": "Sia `a` una lista di interi, qual è la complessità temporale di `f(a)`?",
+    "codice": "def f(a):\n    d = {}\n    c = 0\n    for x in a:\n        if x in d:\n            c += 1\n        else:\n            d[x] = None\n    print(d)\n    return c",
+    "opzioni": [
+      "Lineare nel caso medio",
+      "Lineare nel caso peggiore",
+      "Quadratica nel caso peggiore",
+      "Quadratica nel caso medio",
+      "Quadratica sempre"
+    ],
+    "risposta_esatta": "Quadratica nel caso peggiore"
+  },
+  {
+    "domanda": "Si consideri il seguente frammento di codice: quale delle affermazioni è vera?",
+    "codice": "int  a[3] = {1, 0, -1};\nint *p;\nchar *c;\n\np = a;\nc = a;\n\nc++;\np++;",
+    "opzioni": [
+      "*c < *p",
+      "*p == *c",
+      "c < p",
+      "a[p] == 0"
+    ],
+    "risposta_esatta": "c < p"
+  },
+  {
+    "domanda": "Sia `d` un `dict` implementato in C come visto a lezione (le definizioni delle strutture sono riportate nel codice seguente). Assumendo che un `d_item` occupi `c` byte ed un puntatore `p` byte, quanto vale `sizeof(d)`?",
+    "codice": "struct d_item {\n    char *k;\n    float v;\n};\ntypedef struct d_item d_item;\n\nstruct nodo {\n    d_item info;\n    struct nodo *succ;\n};\ntypedef struct nodo nodo;\n\nstruct dict {\n    nodo **a;\n    int m; // numero di liste (dimensione di a)\n    int n; // numero di elementi nel dizionario\n};\ntypedef struct dict dict;",
+    "opzioni": [
+      "circa p*d.m",
+      "O(1)",
+      "O(n+m)",
+      "circa c*d.n"
+    ],
+    "risposta_esatta": "O(1)"
+  },
+  {
+    "domanda": "Sia `n` un intero positivo, assumendo che `c` sia una opportuna costante qual è lo spazio occupato dalla struttura `d` definita nel seguente frammento di codice?",
+    "codice": "a, d = [], {}\n\nfor i in range(n):\n    a.append(i)\n    d[i] = a",
+    "opzioni": [
+      "circa c*n",
+      "circa c*(n**2)/2",
+      "circa n**c",
+      "circa c*n**2",
+      "circa c*n+(n**2)/2"
+    ],
+    "risposta_esatta": "circa c*n"
+  },
+  {
+    "domanda": "Si consideri il seguente frammento di codice dove `a` è una stringa di interi, quale tra le affermazioni elencate è corretta?",
+    "codice": "c = 0\nn = len(a)\n\nfor c in range(n):\n    i = 0\n    while i < n-c:\n        if a[-i] < a[-i-1]:\n            a[-i], a[-i-1] = a[-i-1], a[-i]\n        i += 1",
+    "opzioni": [
+      "Ordina gli elementi di a dal più piccolo al più grande in tempo quadratico nel caso peggiore",
+      "Ordina gli elementi di a dal più piccolo al più grande in tempo lineare nel caso migliore",
+      "Il programma ha un comportamento indefinito e complessità temporale quadratica",
+      "Ordina gli elementi di a dal più grande al più piccolo in tempo lineare nel caso migliore",
+      "Ordina gli elementi di a dal più grande al più piccolo in tempo quadratico nel caso peggiore"
+    ],
+    "risposta_esatta": "Il programma ha un comportamento indefinito e complessità temporale quadratica"
+  }
+]

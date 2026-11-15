@@ -117,36 +117,7 @@
         .replace(/"/g, "&quot;");
     }
 
-    // PRIMA FUNZIONE: legge i file dalla cartella pretest tramite API GitHub
-    function caricaNomiFile() {
-      const utente = "zym24";
-      const repo = "pretest_programmazione"; 
-      const urlApi = `https://api.github.com/repos/${utente}/${repo}/contents/pretest`;
-
-      fetch(urlApi)
-        .then(response => {
-          if (!response.ok) throw new Error(`Errore API GitHub: ${response.status}`);
-          return response.json();
-        })
-        .then(files => {
-          const nomiFile = files
-            .filter(file => file.type === "file" && file.name.endsWith(".json"))
-            .map(file => file.name)
-            .sort((a, b) => a.localeCompare(b));
-
-          let optionsOut = "";
-          for (let nome of nomiFile) {
-            optionsOut += `<option value="${escapeHtml(nome)}">${escapeHtml(nome)}</option>`;
-          }
-          selectPretest.innerHTML = optionsOut;
-
-          if (nomiFile.length > 0) {
-            caricaContenutoFile(nomiFile[0]);
-          }
-        })
-        .catch(err => console.error("Errore lettura cartella:", err));
-    }
-   // PRIMA FUNZIONE: legge listapretest.json e popola il <select>
+    // PRIMA FUNZIONE: legge listapretest.json e popola il <select>
     function caricaNomiFile() {
       fetch("./pretest/listapretest.json")
         .then(response => {
@@ -171,20 +142,59 @@
         .catch(err => console.error("Errore lettura listapretest:", err));
     }
 
-    // Opzione "Nessuna risposta" selezionata di default
-    const noAnswerId = `risposta_${index}_none`;
-          out += `
-            <div class="opzione-riga">
-              <input type="radio" id="${noAnswerId}" name="domanda_${index}" value="no_answer" checked>
-              <label for="${noAnswerId}"><em>Nessuna risposta</em></label>
-            </div>
-            <div class="feedback-risposta" id="feedback-${index}"></div>
-          </div>`;
-        });
+    // SECONDA FUNZIONE: apre il JSON, salva i dati e stampa le domande
+    function caricaContenutoFile(nomeFile) {
+      risultatoFinale.style.display = "none";
+      risultatoFinale.innerHTML = "";
 
-        placeholder.innerHTML = out;
-      })
-      .catch(err => console.error("Errore lettura file:", err));
+      fetch(`./pretest/${nomeFile}`)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error!: ${response.status}`);
+          return response.json();
+        })
+        .then(testo => {
+          domandeCorrenti = testo;
+          let out = "";
+
+          testo.forEach((tes, index) => {
+            const numDomanda = index + 1;
+            const codiceSicuro = escapeHtml(tes.codice);
+
+            out += `<div class="domanda-box" id="box-domanda-${index}">
+                      <h2>Domanda ${numDomanda}</h2>
+                      <p class="testo-domanda">${escapeHtml(tes.domanda)}</p>`;
+
+            if (tes.codice !== null && tes.codice !== "") {
+              out += `<h2>Codice</h2>
+                      <pre><code>${codiceSicuro}</code></pre>`;
+            }
+
+            out += `<h2>Opzioni</h2>`;
+
+            // Stampa tutte le opzioni del JSON
+            tes.opzioni.forEach((o, optIndex) => {
+              const radioId = `risposta_${index}_${optIndex}`;
+              out += `
+                <div class="opzione-riga" id="riga_${index}_${optIndex}">
+                  <input type="radio" id="${radioId}" name="domanda_${index}" value="${optIndex}">
+                  <label for="${radioId}">${escapeHtml(o)}</label>
+                </div>`;
+            });
+
+            // Opzione "Nessuna risposta" selezionata di default
+            const noAnswerId = `risposta_${index}_none`;
+            out += `
+              <div class="opzione-riga">
+                <input type="radio" id="${noAnswerId}" name="domanda_${index}" value="no_answer" checked>
+                <label for="${noAnswerId}"><em>Nessuna risposta</em></label>
+              </div>
+              <div class="feedback-risposta" id="feedback-${index}"></div>
+            </div>`;
+          });
+
+          placeholder.innerHTML = out;
+        })
+        .catch(err => console.error("Errore lettura file:", err));
     }
 
     // TERZA FUNZIONE: controlla le risposte all'invio del form

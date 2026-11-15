@@ -1,0 +1,119 @@
+[
+  {
+    "domanda": "Quale delle seguenti rappresenta la caratteristica fondamentale di una buona funzione hash per l'implementazione di un dizionario?",
+    "codice": null,
+    "opzioni": [
+      "Essere invertibile, in modo da poter risalire alla chiave originale.",
+      "Distribuire uniformemente i valori di output.",
+      "Avere complessità logaritmica rispetto alla dimensione del dizionario.",
+      "Eliminare le collisioni.",
+      "Ridurre il più possibile il numero totale di collisioni."
+    ],
+    "risposta_esatta": "Distribuire uniformemente i valori di output."
+  },
+  {
+    "domanda": "Si consideri il dizionario `D = {'one': 1, 'zero': 0, 'eight': 8, 'two':2}`. Qual è l'output della seguente espressione?",
+    "codice": "sorted(D, key=lambda x: D[x])",
+    "opzioni": [
+      "['zero', 'one', 'two', 'eight']",
+      "[8, 1, 2, 0]",
+      "[0, 1, 2, 8]",
+      "[8, 2, 1, 0]",
+      "['eight', 'one', 'two', 'zero']"
+    ],
+    "risposta_esatta": "['zero', 'one', 'two', 'eight']"
+  },
+  {
+    "domanda": "Sia `L` una lista composta da due liste di dimensione `n` e si consideri la seguente operazione di clonazione `L1 = L[:]`: quale delle affermazioni è vera?",
+    "codice": null,
+    "opzioni": [
+      "Complessità temporale e spaziale lineare in n.",
+      "Complessità temporale costante e complessità spaziale lineare in n.",
+      "Complessità temporale lineare in n e complessità spaziale costante.",
+      "Complessità temporale e spaziale costante."
+    ],
+    "risposta_esatta": "Complessità temporale e spaziale costante."
+  },
+  {
+    "domanda": "Sia `a = \"first + second\"`. Qual è il valore restituito dall'espressione `len(a)`?",
+    "codice": null,
+    "opzioni": [
+      "14",
+      "13",
+      "(5,1,6)",
+      "11",
+      "12"
+    ],
+    "risposta_esatta": "14"
+  },
+  {
+    "domanda": "Sia `L` una lista di `n` interi. Qual è la complessità temporale dell'operazione?",
+    "codice": "L = L[n:0]",
+    "opzioni": [
+      "Sempre lineare",
+      "Costante nel caso medio",
+      "Lineare nel caso peggiore",
+      "Quadratica",
+      "Costante"
+    ],
+    "risposta_esatta": "Costante"
+  },
+  {
+    "domanda": "Si vuole aumentare la dimensione dell'array `a`, aggiungendo nuovi elementi alla sua destra. Quale affermazione è corretta?",
+    "codice": "int main(){\n    int a[] = {0,1,2,3,4,5,6};\n    int *p = a;\n}",
+    "opzioni": [
+      "a viene automaticamente riallocato se si scrive oltre la sua dimensione",
+      "a non può essere ingrandito ma solo ridotto con realloc",
+      "Eseguire realloc su p",
+      "La dimensione di a non può essere modificata",
+      "Eseguire realloc su a"
+    ],
+    "risposta_esatta": "La dimensione di a non può essere modificata"
+  },
+  {
+    "domanda": "La funzione `mistero` prende in input una funzione `P` ed un intero `n`. Quale delle affermazioni è vera?",
+    "codice": "def mistero(P, n):\n    if P(n) == True:\n        return False\n    else:\n        return True",
+    "opzioni": [
+      "mistero(P,n) restituisce True se e solo se P(n) restituisce True.",
+      "Se P(n) non termina, mistero(P,n) restituisce True",
+      "Se P(n) non termina, mistero(P,n) non termina.",
+      "Se mistero(P,n) termina allora P(n) restituisce True"
+    ],
+    "risposta_esatta": "Se P(n) non termina, mistero(P,n) non termina."
+  },
+  {
+    "domanda": "Qual è il valore ritornato da `enigma(6,0)`?",
+    "codice": "def enigma(n, m):\n    if n >= m:\n        return 1+enigma(n-m, m+1)\n    else:\n        return 0",
+    "opzioni": [
+      "2",
+      "5",
+      "3",
+      "4",
+      "6"
+    ],
+    "risposta_esatta": "4"
+  },
+  {
+    "domanda": "Una password di lunghezza sconosciuta è nascosta in un testo di lunghezza `n`. Può essere ottenuta scegliendo alcuni caratteri del testo, senza alterarne l'ordine. Qual è, in ordine di grandezza, il numero di possibili password?",
+    "codice": null,
+    "opzioni": [
+      "Quadratico in n",
+      "Cubico in n",
+      "Esponenziale in n",
+      "Lineare in n",
+      "Poli-Logaritmico in n"
+    ],
+    "risposta_esatta": "Esponenziale in n"
+  },
+  {
+    "domanda": "Sapendo che `a` è una stringa, qual è il valore di `sizeof(x)`?",
+    "codice": "int main() {\n    struct {\n        char *p;\n        int n;\n    } x;\n\n    /*\n    definizione di a...\n    */\n\n    x.p = a;\n}",
+    "opzioni": [
+      "È un valore costante",
+      "Dipende dalla dimensione dell'array che contiene",
+      "Dipende dalla lunghezza di a se a è allocato in modo statico",
+      "Dipende dalla lunghezza di a"
+    ],
+    "risposta_esatta": "È un valore costante"
+  }
+]

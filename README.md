@@ -12,7 +12,6 @@ La piattaforma ospita simulazioni di vecchi esami e permette di scegliere un pre
 
 ## Funzionamento
 
-- [`index.html`](index.html) contiene struttura, stile e logica del sito.
 - [`pretest/listapretest.json`](pretest/listapretest.json) contiene l'elenco dei pretest disponibili.
 - La cartella [`pretest`](pretest) contiene i file JSON dei singoli esami.
 - Ogni risposta viene confrontata con il campo `risposta_esatta`.
